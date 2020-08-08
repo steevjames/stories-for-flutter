@@ -18,31 +18,75 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Stories(
-            storyItemList: [
-              StoryItem(
-                  name: "hello",
-                  thumbnail:
-                      "https://img.icons8.com/cute-clipart/2x/penrose-square.png",
-                  stories: [
-                    Text("1111"),
-                    Image.network(
-                        "https://img.icons8.com/cute-clipart/2x/penrose-square.png")
-                  ]),
-              StoryItem(
-                name: "2nd",
-                thumbnail:
-                    "https://i.pinimg.com/564x/4e/b0/8a/4eb08a56e139fb59d4a8c0997e9e26e4.jpg",
-                stories: [
-                  Center(
-                    child: Text("1"),
+        body: Column(
+          children: [
+            Stories(
+              storyItemList: [
+                StoryItem(
+                    name: "First Story",
+                    thumbnail: NetworkImage(
+                      "https://assets.materialup.com/uploads/82eae29e-33b7-4ff7-be10-df432402b2b6/preview",
+                    ),
+                    stories: [
+                      Scaffold(
+                        body: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://wallpaperaccess.com/full/16568.png",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Scaffold(
+                        body: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://i.pinimg.com/originals/89/27/dc/8927dcf60dfd605fce74cc3e2aea015f.jpg",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                StoryItem(
+                  name: "2nd",
+                  thumbnail: NetworkImage(
+                    "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
                   ),
-                  Text("2"),
-                ],
-              ),
-            ],
-          ),
+                  stories: [
+                    Scaffold(
+                      body: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              "https://i.pinimg.com/originals/1c/46/7a/1c467ad167a6a0d26d94ff5e15ab40ce.jpg",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Scaffold(
+                      body: Center(
+                        child: Text(
+                          "That's it, Folks !",
+                          style: TextStyle(
+                            color: Color(0xff777777),
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
