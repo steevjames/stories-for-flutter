@@ -5,7 +5,15 @@ class Stories extends StatelessWidget {
   final List<StoryItem> storyItemList;
   final TextStyle storyCircleTextStyle;
   final Color highLightColor;
-  Stories({this.storyItemList, this.storyCircleTextStyle, this.highLightColor});
+  final double circleRadius;
+  final double circlePadding;
+  Stories({
+    this.storyItemList,
+    this.storyCircleTextStyle,
+    this.highLightColor,
+    this.circleRadius,
+    this.circlePadding,
+  });
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -21,6 +29,8 @@ class Stories extends StatelessWidget {
               selectedIndex: index,
               storyCircleTextStyle: storyCircleTextStyle,
               highLightColor: highLightColor,
+              circleRadius: circleRadius,
+              circlePadding: circlePadding,
             ),
           ),
         ),

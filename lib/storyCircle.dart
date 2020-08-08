@@ -7,13 +7,27 @@ class StoryCircle extends StatelessWidget {
   final int selectedIndex;
   final TextStyle storyCircleTextStyle;
   final Color highLightColor;
-  StoryCircle(
-      {this.story,
-      this.selectedIndex,
-      this.storyCircleTextStyle,
-      this.highLightColor});
+  final double circleRadius;
+  final double circlePadding;
+  StoryCircle({
+    this.story,
+    this.selectedIndex,
+    this.storyCircleTextStyle,
+    this.highLightColor,
+    this.circleRadius,
+    this.circlePadding,
+  });
   @override
   Widget build(BuildContext context) {
+    double altRadius = 27;
+    double altPadding;
+    if (circleRadius != null) {
+      altRadius = circleRadius;
+    }
+    if (circlePadding != null) {
+      altPadding = altRadius + circlePadding;
+    } else
+      altPadding = altRadius + 3;
     return Container(
       margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
       child: Column(
@@ -30,13 +44,13 @@ class StoryCircle extends StatelessWidget {
               );
             },
             child: CircleAvatar(
-              radius: 31.5,
+              radius: altPadding + 1.5,
               backgroundColor: highLightColor ?? Color(0xffcc306C),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
-                radius: 30,
+                radius: altPadding,
                 child: CircleAvatar(
-                    radius: 27,
+                    radius: altRadius,
                     backgroundColor: Colors.white,
                     backgroundImage: story[selectedIndex].thumbnail),
               ),
