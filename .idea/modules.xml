@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Stories_for_Flutter.iml" filepath="$PROJECT_DIR$/Stories_for_Flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/Stories_for_Flutter_android.iml" filepath="$PROJECT_DIR$/android/Stories_for_Flutter_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/Stories_for_Flutter_example_android.iml" filepath="$PROJECT_DIR$/example/android/Stories_for_Flutter_example_android.iml" />
+    </modules>
+  </component>
+</project>
