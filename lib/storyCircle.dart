@@ -5,7 +5,8 @@ import 'package:Stories_for_Flutter/fullPageView.dart';
 class StoryCircle extends StatelessWidget {
   final List<StoryItem> story;
   final int selectedIndex;
-  StoryCircle(this.story, this.selectedIndex);
+  final TextStyle storyCircleTextStyle;
+  StoryCircle(this.story, this.selectedIndex, this.storyCircleTextStyle);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,19 +31,16 @@ class StoryCircle extends StatelessWidget {
                 backgroundColor: Colors.white,
                 radius: 30,
                 child: CircleAvatar(
-                  radius: 27,
-                  backgroundColor: Colors.white,
-                  backgroundImage: NetworkImage(
-                    story[selectedIndex].thumbnail,
-                  ),
-                ),
+                    radius: 27,
+                    backgroundColor: Colors.white,
+                    backgroundImage: story[selectedIndex].thumbnail),
               ),
             ),
           ),
           SizedBox(height: 5),
           Text(
             story[selectedIndex].name,
-            style: TextStyle(fontSize: 13),
+            style: storyCircleTextStyle ?? TextStyle(fontSize: 13),
           ),
         ],
       ),

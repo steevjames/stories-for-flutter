@@ -19,7 +19,7 @@ class FullPageViewState extends State<FullPageView> {
 
   FullPageViewState(this.storiesMapList, this.storyNumber);
 
-  List combinedList;
+  List<Widget> combinedList;
   List listLengths;
   int selectedIndex;
   PageController _pageController;
@@ -73,16 +73,7 @@ class FullPageViewState extends State<FullPageView> {
               (index) => Stack(
                 children: <Widget>[
                   Scaffold(
-                    body: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            combinedList[index],
-                          ),
-                        ),
-                      ),
-                    ),
+                    body: combinedList[index],
                   ),
                   // Overlay to detect taps for next page & previous page
                   Row(
@@ -176,8 +167,8 @@ class FullPageViewState extends State<FullPageView> {
   }
 }
 
-List<String> getStoryList(List<StoryItem> storiesMapList) {
-  List<String> imagesList = [];
+List<Widget> getStoryList(List<StoryItem> storiesMapList) {
+  List<Widget> imagesList = [];
   for (int i = 0; i < storiesMapList.length; i++)
     for (int j = 0; j < storiesMapList[i].stories.length; j++)
       imagesList.add(storiesMapList[i].stories[j]);
