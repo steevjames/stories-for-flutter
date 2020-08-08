@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class Stories extends StatelessWidget {
   final List<StoryItem> storyItemList;
   final TextStyle storyCircleTextStyle;
-  Stories({this.storyItemList, this.storyCircleTextStyle});
+  final Color highLightColor;
+  Stories({this.storyItemList, this.storyCircleTextStyle, this.highLightColor});
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -15,7 +16,12 @@ class Stories extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: List.generate(
             storyItemList.length,
-            (index) => StoryCircle(storyItemList, index, storyCircleTextStyle),
+            (index) => StoryCircle(
+              story: storyItemList,
+              selectedIndex: index,
+              storyCircleTextStyle: storyCircleTextStyle,
+              highLightColor: highLightColor,
+            ),
           ),
         ),
       ),
