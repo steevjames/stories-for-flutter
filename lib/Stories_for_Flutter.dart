@@ -7,12 +7,14 @@ class Stories extends StatelessWidget {
   final Color highLightColor;
   final double circleRadius;
   final double circlePadding;
+  final double borderThickness;
   Stories({
     this.storyItemList,
     this.storyCircleTextStyle,
     this.highLightColor,
     this.circleRadius,
     this.circlePadding,
+    this.borderThickness,
   });
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class Stories extends StatelessWidget {
               highLightColor: highLightColor,
               circleRadius: circleRadius,
               circlePadding: circlePadding,
+              borderThickness: borderThickness,
             ),
           ),
         ),

@@ -9,6 +9,7 @@ class StoryCircle extends StatelessWidget {
   final Color highLightColor;
   final double circleRadius;
   final double circlePadding;
+  final double borderThickness;
   StoryCircle({
     this.story,
     this.selectedIndex,
@@ -16,6 +17,7 @@ class StoryCircle extends StatelessWidget {
     this.highLightColor,
     this.circleRadius,
     this.circlePadding,
+    this.borderThickness,
   });
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,9 @@ class StoryCircle extends StatelessWidget {
               );
             },
             child: CircleAvatar(
-              radius: altPadding + 1.5,
+              radius: borderThickness != null
+                  ? altPadding + borderThickness
+                  : altPadding + 1.5,
               backgroundColor: highLightColor ?? Color(0xffcc306C),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
