@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftStoriesForFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "Stories_for_Flutter", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "stories_for_flutter", binaryMessenger: registrar.messenger())
     let instance = SwiftStoriesForFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

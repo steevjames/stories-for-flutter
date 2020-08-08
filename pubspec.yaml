@@ -1,8 +1,8 @@
-name: Stories_for_Flutter
+name: stories_for_flutter
 description: A new flutter plugin project.
 version: 0.0.1
-author: "Xteev"
-homepage:
+# author: "XteeV"
+homepage: https://github.com/steevjames/Stories-for-Flutter
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -28,7 +28,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.Stories_for_Flutter
+        package: com.xteev.storiesforflutter.stories_for_flutter
         pluginClass: StoriesForFlutterPlugin
       ios:
         pluginClass: StoriesForFlutterPlugin

@@ -1,4 +1,4 @@
-package com.example.Stories_for_Flutter
+package com.xteev.storiesforflutter.stories_for_flutter
 
 import androidx.annotation.NonNull;
 
@@ -18,7 +18,7 @@ public class StoriesForFlutterPlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "Stories_for_Flutter")
+    channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "stories_for_flutter")
     channel.setMethodCallHandler(this);
   }
 
@@ -34,7 +34,7 @@ public class StoriesForFlutterPlugin: FlutterPlugin, MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "Stories_for_Flutter")
+      val channel = MethodChannel(registrar.messenger(), "stories_for_flutter")
       channel.setMethodCallHandler(StoriesForFlutterPlugin())
     }
   }

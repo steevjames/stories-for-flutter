@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Stories_for_Flutter/Stories_for_Flutter.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 void main() {
   runApp(MyApp());

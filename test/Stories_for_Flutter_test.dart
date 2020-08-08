@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-// import 'package:Stories_for_Flutter/Stories_for_Flutter.dart';
+// import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('Stories_for_Flutter');
+  const MethodChannel channel = MethodChannel('stories_for_flutter');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -15,5 +15,9 @@ void main() {
 
   tearDown(() {
     channel.setMockMethodCallHandler(null);
+  });
+
+  test('getPlatformVersion', () async {
+    // expect(await StoriesForFlutter.platformVersion, '42');
   });
 }

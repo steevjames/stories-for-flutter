@@ -1,6 +1,6 @@
-# Stories_for_Flutter_example
+# stories_for_flutter_example
 
-Demonstrates how to use the Stories_for_Flutter plugin.
+Demonstrates how to use the stories_for_flutter plugin.
 
 ## Getting Started
 

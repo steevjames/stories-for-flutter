@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Stories_for_Flutter.iml" filepath="$PROJECT_DIR$/Stories_for_Flutter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/Stories_for_Flutter_android.iml" filepath="$PROJECT_DIR$/android/Stories_for_Flutter_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example/android/Stories_for_Flutter_example_android.iml" filepath="$PROJECT_DIR$/example/android/Stories_for_Flutter_example_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stories_for_flutter.iml" filepath="$PROJECT_DIR$/stories_for_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/stories_for_flutter_android.iml" filepath="$PROJECT_DIR$/android/stories_for_flutter_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/stories_for_flutter_example_android.iml" filepath="$PROJECT_DIR$/example/android/stories_for_flutter_example_android.iml" />
     </modules>
   </component>
 </project>

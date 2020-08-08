@@ -1,4 +1,4 @@
-# Stories_for_Flutter
+# stories_for_flutter
 
 A new flutter plugin project.
 

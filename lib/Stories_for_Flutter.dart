@@ -1,4 +1,4 @@
-import 'package:Stories_for_Flutter/storyCircle.dart';
+import 'package:stories_for_flutter/storyCircle.dart';
 import 'package:flutter/material.dart';
 
 class Stories extends StatelessWidget {

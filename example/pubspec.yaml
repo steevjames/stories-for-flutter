@@ -1,5 +1,5 @@
-name: Stories_for_Flutter_example
-description: Demonstrates how to use the Stories_for_Flutter plugin.
+name: stories_for_flutter_example
+description: Demonstrates how to use the stories_for_flutter plugin.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -12,9 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  Stories_for_Flutter:
+  stories_for_flutter:
     # When depending on this package from a real application you should use:
-    #   Stories_for_Flutter: ^x.y.z
+    #   stories_for_flutter: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.

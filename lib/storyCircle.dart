@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Stories_for_Flutter/Stories_for_Flutter.dart';
-import 'package:Stories_for_Flutter/fullPageView.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
+import 'package:stories_for_flutter/fullPageView.dart';
 
 class StoryCircle extends StatelessWidget {
   final List<StoryItem> story;

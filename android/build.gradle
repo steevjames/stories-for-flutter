@@ -1,4 +1,4 @@
-group 'com.example.Stories_for_Flutter'
+group 'com.xteev.storiesforflutter.stories_for_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
