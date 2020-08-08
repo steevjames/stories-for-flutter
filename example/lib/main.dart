@@ -26,15 +26,19 @@ class _MyAppState extends State<MyApp> {
                   thumbnail:
                       "https://img.icons8.com/cute-clipart/2x/penrose-square.png",
                   stories: [
-                    "https://img.icons8.com/cute-clipart/2x/penrose-square.png"
+                    Text("1111"),
+                    Image.network(
+                        "https://img.icons8.com/cute-clipart/2x/penrose-square.png")
                   ]),
               StoryItem(
                 name: "2nd",
                 thumbnail:
                     "https://i.pinimg.com/564x/4e/b0/8a/4eb08a56e139fb59d4a8c0997e9e26e4.jpg",
                 stories: [
-                  "https://i.pinimg.com/564x/4e/b0/8a/4eb08a56e139fb59d4a8c0997e9e26e4.jpg",
-                  "https://i.pinimg.com/564x/4e/b0/8a/4eb08a56e139fb59d4a8c0997e9e26e4.jpg"
+                  Center(
+                    child: Text("1"),
+                  ),
+                  Text("2"),
                 ],
               ),
             ],
