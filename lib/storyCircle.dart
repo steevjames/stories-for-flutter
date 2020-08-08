@@ -10,6 +10,7 @@ class StoryCircle extends StatelessWidget {
   final double circleRadius;
   final double circlePadding;
   final double borderThickness;
+  final TextStyle fullPagetitleStyle;
   StoryCircle({
     this.story,
     this.selectedIndex,
@@ -18,6 +19,7 @@ class StoryCircle extends StatelessWidget {
     this.circleRadius,
     this.circlePadding,
     this.borderThickness,
+    this.fullPagetitleStyle,
   });
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,10 @@ class StoryCircle extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => FullPageView(
-                      storiesMapList: story, storyNumber: selectedIndex),
+                    storiesMapList: story,
+                    storyNumber: selectedIndex,
+                    fullPagetitleStyle: fullPagetitleStyle,
+                  ),
                 ),
               );
             },

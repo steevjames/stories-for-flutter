@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 class FullPageView extends StatefulWidget {
   final List<StoryItem> storiesMapList;
   final int storyNumber;
+  final TextStyle fullPagetitleStyle;
 
-  FullPageView(
-      {Key key, @required this.storiesMapList, @required this.storyNumber})
-      : super(key: key);
+  FullPageView({
+    Key key,
+    @required this.storiesMapList,
+    @required this.storyNumber,
+    this.fullPagetitleStyle,
+  }) : super(key: key);
   @override
   FullPageViewState createState() =>
       FullPageViewState(storiesMapList, storyNumber);
@@ -153,10 +157,13 @@ class FullPageViewState extends State<FullPageView> {
                 child: Text(
                   ' ' * 5 +
                       getStoryName(listLengths, selectedIndex, storiesMapList),
-                  style: TextStyle(
-                      color: Colors.white,
-                      shadows: [Shadow(blurRadius: 10, color: Colors.black)],
-                      fontSize: 16),
+                  style: widget.fullPagetitleStyle ??
+                      TextStyle(
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(blurRadius: 10, color: Colors.black)
+                          ],
+                          fontSize: 16),
                 ),
               ),
             ],

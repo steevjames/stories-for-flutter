@@ -8,6 +8,7 @@ class Stories extends StatelessWidget {
   final double circleRadius;
   final double circlePadding;
   final double borderThickness;
+  final TextStyle fullPagetitleStyle;
   Stories({
     this.storyItemList,
     this.storyCircleTextStyle,
@@ -15,6 +16,7 @@ class Stories extends StatelessWidget {
     this.circleRadius,
     this.circlePadding,
     this.borderThickness,
+    this.fullPagetitleStyle,
   });
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class Stories extends StatelessWidget {
               circleRadius: circleRadius,
               circlePadding: circlePadding,
               borderThickness: borderThickness,
+              fullPagetitleStyle: fullPagetitleStyle,
             ),
           ),
         ),
