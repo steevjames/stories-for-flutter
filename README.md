@@ -12,7 +12,7 @@ A **customizable** flutter package that allows you to use **Instagram** like sto
 
   ## Screenshots
 
-<img src="screenshots/1.jpg" width="250"/>  <img src="screenshots/2.jpg" width="250"/>  <img src="screenshots/3.jpg" width="250"/>  <img src="screenshots/4.jpg" width="250"/>  
+<img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/1.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/2.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/3.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/4.jpg?raw=true" width="250"/>  
 
 ## Using the package
 
