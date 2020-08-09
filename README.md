@@ -12,10 +12,7 @@ A **customizable** flutter package that allows you to use **Instagram** like sto
 
   ## Screenshots
 
-<img src="screenshots/1.jpg" width="100"/>  
-<img src="screenshots/2.jpg" width="100"/>  
-<img src="screenshots/3.jpg" width="100"/>  
-<img src="screenshots/4.jpg" width="100"/>  
+<img src="screenshots/1.jpg" width="250"/>  <img src="screenshots/2.jpg" width="250"/>  <img src="screenshots/3.jpg" width="250"/>  <img src="screenshots/4.jpg" width="250"/>  
 
 ## Using the package
 
