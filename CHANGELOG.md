@@ -1,3 +1,8 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Stories for Flutter is now ready.
+
+
+## 0.0.1
+
+* Better documentation
