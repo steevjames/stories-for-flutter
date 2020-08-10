@@ -17,12 +17,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Stories Ex ample'),
+          title: const Text('Stories Example'),
         ),
         body: Column(
           children: [
             Stories(
-              displayProgress: true,
+              circlePadding: 2,
               storyItemList: [
                 StoryItem(
                     name: "First Story",

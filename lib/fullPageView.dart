@@ -15,14 +15,30 @@ class FullPageView extends StatefulWidget {
   /// Color for non visited region in progress indicator
   final Color fullpageUnvisitedColor;
 
+  /// Whether image has to be show on top left of the page
+  final bool showThumbnailOnFullPage;
+
+  /// Size of the top left image
+  final double fullpageThumbnailSize;
+
+  /// Whether image has to be show on top left of the page
+  final bool showStoryNameOnFullPage;
+
+  /// Status bar color in full view of story
+  final Color storyStatusBarColor;
+
   FullPageView({
     Key key,
     @required this.storiesMapList,
     @required this.storyNumber,
     this.fullPagetitleStyle,
-    this.displayProgress = false,
+    this.displayProgress,
     this.fullpageVisitedColor,
     this.fullpageUnvisitedColor,
+    this.showThumbnailOnFullPage,
+    this.fullpageThumbnailSize,
+    this.showStoryNameOnFullPage,
+    this.storyStatusBarColor,
   }) : super(key: key);
   @override
   FullPageViewState createState() => FullPageViewState();
@@ -38,6 +54,10 @@ class FullPageViewState extends State<FullPageView> {
   bool displayProgress;
   Color fullpageVisitedColor;
   Color fullpageUnvisitedColor;
+  bool showThumbnailOnFullPage;
+  double fullpageThumbnailSize;
+  bool showStoryNameOnFullPage;
+  Color storyStatusBarColor;
 
   nextPage(index) {
     if (index == combinedList.length - 1) {
@@ -70,9 +90,13 @@ class FullPageViewState extends State<FullPageView> {
     listLengths = getStoryLengths(storiesMapList);
     selectedIndex = getInitialIndex(storyNumber, storiesMapList);
 
-    displayProgress = widget.displayProgress ?? false;
+    displayProgress = widget.displayProgress ?? true;
     fullpageVisitedColor = widget.fullpageVisitedColor;
     fullpageUnvisitedColor = widget.fullpageUnvisitedColor;
+    showThumbnailOnFullPage = widget.showThumbnailOnFullPage;
+    fullpageThumbnailSize = widget.fullpageThumbnailSize;
+    showStoryNameOnFullPage = widget.showStoryNameOnFullPage ?? true;
+    storyStatusBarColor = widget.storyStatusBarColor;
 
     super.initState();
   }
@@ -130,7 +154,7 @@ class FullPageViewState extends State<FullPageView> {
           Column(
             children: <Widget>[
               Container(
-                color: Colors.black,
+                color: storyStatusBarColor ?? Colors.black,
                 child: SafeArea(
                   child: Center(),
                 ),
@@ -175,19 +199,44 @@ class FullPageViewState extends State<FullPageView> {
                   : Center(),
               SizedBox(height: 5),
               // Story name
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  ' ' * 5 +
-                      getStoryName(listLengths, selectedIndex, storiesMapList),
-                  style: widget.fullPagetitleStyle ??
-                      TextStyle(
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(blurRadius: 10, color: Colors.black)
-                          ],
-                          fontSize: 16),
-                ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: (showThumbnailOnFullPage == null ||
+                            showThumbnailOnFullPage)
+                        ? Image(
+                            width: fullpageThumbnailSize ?? 25,
+                            height: fullpageThumbnailSize ?? 25,
+                            image: storiesMapList[
+                                    getStoryIndex(listLengths, selectedIndex)]
+                                .thumbnail,
+                          )
+                        : Center(),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          showStoryNameOnFullPage
+                              ? storiesMapList[
+                                      getStoryIndex(listLengths, selectedIndex)]
+                                  .name
+                              : "",
+                          style: widget.fullPagetitleStyle ??
+                              TextStyle(
+                                color: Colors.white,
+                                shadows: [
+                                  Shadow(blurRadius: 10, color: Colors.black)
+                                ],
+                                fontSize: 13,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -243,8 +292,7 @@ getInitialIndex(int storyNumber, List<StoryItem> storiesMapList) {
   return total;
 }
 
-String getStoryName(
-    List<int> listLengths, int index, List<StoryItem> storiesMapList) {
+int getStoryIndex(List<int> listLengths, int index) {
   index = index + 1;
   int temp = 0;
   int val = 0;
@@ -253,5 +301,5 @@ String getStoryName(
     if (temp != listLengths[i]) val += 1;
     temp = listLengths[i];
   }
-  return storiesMapList[val].name;
+  return val;
 }

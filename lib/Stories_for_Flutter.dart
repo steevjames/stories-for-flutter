@@ -34,6 +34,22 @@ class Stories extends StatelessWidget {
 
   /// Color for non visited region in progress indicator
   final Color fullpageUnisitedColor;
+
+  /// Horizontal space between stories
+  final double spaceBetweenStories;
+
+  /// Whether image has to be show on top left of the page
+  final bool showThumbnailOnFullPage;
+
+  /// Size of the top left image
+  final double fullpageThumbnailSize;
+
+  /// Whether image has to be show on top left of the page
+  final bool showStoryNameOnFullPage;
+
+  /// Status bar color in full view of story
+  final Color storyStatusBarColor;
+
   Stories({
     this.storyItemList,
     this.storyCircleTextStyle,
@@ -46,6 +62,11 @@ class Stories extends StatelessWidget {
     this.displayProgress,
     this.fullpageVisitedColor,
     this.fullpageUnisitedColor,
+    this.spaceBetweenStories,
+    this.showThumbnailOnFullPage,
+    this.fullpageThumbnailSize,
+    this.showStoryNameOnFullPage,
+    this.storyStatusBarColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -72,6 +93,11 @@ class Stories extends StatelessWidget {
                     paddingColor: paddingColor,
                     fullpageUnvisitedColor: fullpageUnisitedColor,
                     fullpageVisitedColor: fullpageVisitedColor,
+                    spaceBetweenStories: spaceBetweenStories,
+                    fullpageThumbnailSize: fullpageThumbnailSize,
+                    showStoryNameOnFullPage: showStoryNameOnFullPage,
+                    showThumbnailOnFullPage: showThumbnailOnFullPage,
+                    storyStatusBarColor: storyStatusBarColor,
                   ),
                 ),
               ),
