@@ -12,7 +12,7 @@ A **customizable** flutter package that allows you to use **Instagram** like sto
 
   ## Screenshots
 
-<img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/1.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/2.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/3.jpg?raw=true" width="250"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/4.jpg?raw=true" width="250"/>  
+<img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/1.jpg?raw=true" width="200"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/2.jpg?raw=true" width="200"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/3.jpg?raw=true" width="200"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/4.jpg?raw=true" width="200"/>  <img src="https://github.com/steevjames/Stories-for-Flutter/blob/master/screenshots/5.jpg?raw=true" width="200"/>  
 
 ## Using the package
 
@@ -50,6 +50,7 @@ A **customizable** flutter package that allows you to use **Instagram** like sto
 **Example**:
 
     Stories(
+        displayProgress: true,
         storyItemList: [
           // First group of stories
           StoryItem(

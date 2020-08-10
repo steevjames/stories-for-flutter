@@ -6,27 +6,38 @@ class FullPageView extends StatefulWidget {
   final int storyNumber;
   final TextStyle fullPagetitleStyle;
 
+  /// Choose whether progress has to be shown
+  final bool displayProgress;
+
+  /// Color for visited region in progress indicator
+  final Color fullpageVisitedColor;
+
+  /// Color for non visited region in progress indicator
+  final Color fullpageUnvisitedColor;
+
   FullPageView({
     Key key,
     @required this.storiesMapList,
     @required this.storyNumber,
     this.fullPagetitleStyle,
+    this.displayProgress = false,
+    this.fullpageVisitedColor,
+    this.fullpageUnvisitedColor,
   }) : super(key: key);
   @override
-  FullPageViewState createState() =>
-      FullPageViewState(storiesMapList, storyNumber);
+  FullPageViewState createState() => FullPageViewState();
 }
 
 class FullPageViewState extends State<FullPageView> {
-  final List<StoryItem> storiesMapList;
+  List<StoryItem> storiesMapList;
   int storyNumber;
-
-  FullPageViewState(this.storiesMapList, this.storyNumber);
-
   List<Widget> combinedList;
   List listLengths;
   int selectedIndex;
   PageController _pageController;
+  bool displayProgress;
+  Color fullpageVisitedColor;
+  Color fullpageUnvisitedColor;
 
   nextPage(index) {
     if (index == combinedList.length - 1) {
@@ -52,9 +63,17 @@ class FullPageViewState extends State<FullPageView> {
 
   @override
   void initState() {
+    storiesMapList = widget.storiesMapList;
+    storyNumber = widget.storyNumber;
+
     combinedList = getStoryList(storiesMapList);
     listLengths = getStoryLengths(storiesMapList);
     selectedIndex = getInitialIndex(storyNumber, storiesMapList);
+
+    displayProgress = widget.displayProgress ?? false;
+    fullpageVisitedColor = widget.fullpageVisitedColor;
+    fullpageUnvisitedColor = widget.fullpageUnvisitedColor;
+
     super.initState();
   }
 
@@ -116,40 +135,44 @@ class FullPageViewState extends State<FullPageView> {
                   child: Center(),
                 ),
               ),
-              Row(
-                children: List.generate(
-                      numOfCompleted(listLengths, selectedIndex),
-                      (index) => Expanded(
-                        child: Container(
-                          margin: EdgeInsets.all(2),
-                          height: 2.5,
-                          decoration: BoxDecoration(
-                              color: Color(0xff444444),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 2,
-                                )
-                              ]),
-                        ),
-                      ),
-                    ) +
-                    List.generate(
-                      (getCurrentLength(listLengths, selectedIndex) -
-                          numOfCompleted(listLengths, selectedIndex)),
-                      (index) => Expanded(
-                        child: Container(
-                          margin: EdgeInsets.all(2),
-                          height: 2.5,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [BoxShadow(blurRadius: 2)],
+              displayProgress
+                  ? Row(
+                      children: List.generate(
+                            numOfCompleted(listLengths, selectedIndex),
+                            (index) => Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                height: 2.5,
+                                decoration: BoxDecoration(
+                                    color: fullpageVisitedColor ??
+                                        Color(0xff444444),
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 2,
+                                      )
+                                    ]),
+                              ),
+                            ),
+                          ) +
+                          List.generate(
+                            (getCurrentLength(listLengths, selectedIndex) -
+                                numOfCompleted(listLengths, selectedIndex)),
+                            (index) => Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                height: 2.5,
+                                decoration: BoxDecoration(
+                                  color: widget.fullpageUnvisitedColor ??
+                                      Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [BoxShadow(blurRadius: 2)],
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-              ),
+                    )
+                  : Center(),
               SizedBox(height: 5),
               // Story name
               Align(

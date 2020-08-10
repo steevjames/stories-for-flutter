@@ -22,6 +22,18 @@ class Stories extends StatelessWidget {
 
   /// Textstyle of title of a story group
   final TextStyle fullPagetitleStyle;
+
+  /// Color for region between border and circle
+  final Color paddingColor;
+
+  /// Choose whether progress has to be shown
+  final bool displayProgress;
+
+  /// Color for visited region in progress indicator
+  final Color fullpageVisitedColor;
+
+  /// Color for non visited region in progress indicator
+  final Color fullpageUnisitedColor;
   Stories({
     this.storyItemList,
     this.storyCircleTextStyle,
@@ -30,6 +42,10 @@ class Stories extends StatelessWidget {
     this.circlePadding,
     this.borderThickness,
     this.fullPagetitleStyle,
+    this.paddingColor,
+    this.displayProgress,
+    this.fullpageVisitedColor,
+    this.fullpageUnisitedColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -51,7 +67,11 @@ class Stories extends StatelessWidget {
                     circleRadius: circleRadius,
                     circlePadding: circlePadding,
                     borderThickness: borderThickness,
+                    displayProgress: displayProgress,
                     fullPagetitleStyle: fullPagetitleStyle,
+                    paddingColor: paddingColor,
+                    fullpageUnvisitedColor: fullpageUnisitedColor,
+                    fullpageVisitedColor: fullpageVisitedColor,
                   ),
                 ),
               ),

@@ -17,11 +17,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Stories Ex ample'),
         ),
         body: Column(
           children: [
             Stories(
+              displayProgress: true,
               storyItemList: [
                 StoryItem(
                     name: "First Story",
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                "https://i.pinimg.com/originals/89/27/dc/8927dcf60dfd605fce74cc3e2aea015f.jpg",
+                                "https://i.pinimg.com/originals/2e/c6/b5/2ec6b5e14fe0cba0cb0aa5d2caeeccc6.jpg",
                               ),
                             ),
                           ),

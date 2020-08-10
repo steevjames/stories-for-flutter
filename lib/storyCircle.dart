@@ -11,6 +11,16 @@ class StoryCircle extends StatelessWidget {
   final double circlePadding;
   final double borderThickness;
   final TextStyle fullPagetitleStyle;
+  final Color paddingColor;
+
+  /// Choose whether progress has to be shown
+  final bool displayProgress;
+
+  /// Color for visited region in progress indicator
+  final Color fullpageVisitedColor;
+
+  /// Color for non visited region in progress indicator
+  final Color fullpageUnvisitedColor;
   StoryCircle({
     this.story,
     this.selectedIndex,
@@ -20,6 +30,10 @@ class StoryCircle extends StatelessWidget {
     this.circlePadding,
     this.borderThickness,
     this.fullPagetitleStyle,
+    this.paddingColor,
+    this.displayProgress,
+    this.fullpageVisitedColor,
+    this.fullpageUnvisitedColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -46,6 +60,9 @@ class StoryCircle extends StatelessWidget {
                     storiesMapList: story,
                     storyNumber: selectedIndex,
                     fullPagetitleStyle: fullPagetitleStyle,
+                    displayProgress: displayProgress,
+                    fullpageVisitedColor: fullpageVisitedColor,
+                    fullpageUnvisitedColor: fullpageUnvisitedColor,
                   ),
                 ),
               );
@@ -56,7 +73,7 @@ class StoryCircle extends StatelessWidget {
                   : altPadding + 1.5,
               backgroundColor: highLightColor ?? Color(0xffcc306C),
               child: CircleAvatar(
-                backgroundColor: Colors.white,
+                backgroundColor: paddingColor ?? Colors.white,
                 radius: altPadding,
                 child: CircleAvatar(
                     radius: altRadius,

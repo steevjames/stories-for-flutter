@@ -11,6 +11,6 @@
 
 * Better documentation
 
-## 0.1.6
+## 0.1.7
 
-* Better documentation, fixes
+* Added progress colors, toggle to show or hide progress, improved documentation
