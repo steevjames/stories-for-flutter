@@ -204,7 +204,8 @@ class FullPageViewState extends State<FullPageView> {
                                     borderRadius: BorderRadius.circular(20),
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 2,
+                                        blurRadius: 10,
+                                        color: Colors.black,
                                       )
                                     ]),
                               ),
