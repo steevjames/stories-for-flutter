@@ -18,3 +18,7 @@
 ## 0.1.8
 
 * Status bar color, story thumbnails, toggle story name, story padding & more
+
+# 0.2.0
+
+* Nullsafety support

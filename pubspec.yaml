@@ -1,12 +1,12 @@
 name: stories_for_flutter
 description: Stories like Instagram or statuses like WhatsApp with the highly customizable stories for Flutter package.
-version: 0.1.8
+version: 0.2.0
 # author: "XteeV"
 homepage: https://github.com/steevjames/Stories-for-Flutter
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.20.0 <2.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:

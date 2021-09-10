@@ -27,6 +27,8 @@ class FullPageView extends StatefulWidget {
   /// Status bar color in full view of story
   final Color? storyStatusBarColor;
 
+  final Function? onPageChanged;
+
   FullPageView({
     Key? key,
     required this.storiesMapList,
@@ -39,6 +41,7 @@ class FullPageView extends StatefulWidget {
     this.fullpageThumbnailSize,
     this.showStoryNameOnFullPage,
     this.storyStatusBarColor,
+    this.onPageChanged,
   }) : super(key: key);
   @override
   FullPageViewState createState() => FullPageViewState();
@@ -112,6 +115,8 @@ class FullPageViewState extends State<FullPageView> {
               setState(() {
                 selectedIndex = page;
               });
+              // Running on pageChanged
+              if (widget.onPageChanged != null) widget.onPageChanged!();
             },
             controller: _pageController,
             scrollDirection: Axis.horizontal,
@@ -162,7 +167,8 @@ class FullPageViewState extends State<FullPageView> {
               displayProgress
                   ? Row(
                       children: List.generate(
-                            numOfCompleted(listLengths as List<int>, selectedIndex!),
+                            numOfCompleted(
+                                listLengths as List<int>, selectedIndex!),
                             (index) => Expanded(
                               child: Container(
                                 margin: EdgeInsets.all(2),
@@ -180,8 +186,10 @@ class FullPageViewState extends State<FullPageView> {
                             ),
                           ) +
                           List.generate(
-                            getCurrentLength(listLengths as List<int>, selectedIndex!) -
-                                numOfCompleted(listLengths as List<int>, selectedIndex!) as int,
+                            getCurrentLength(
+                                    listLengths as List<int>, selectedIndex!) -
+                                numOfCompleted(listLengths as List<int>,
+                                    selectedIndex!) as int,
                             (index) => Expanded(
                               child: Container(
                                 margin: EdgeInsets.all(2),
@@ -208,8 +216,8 @@ class FullPageViewState extends State<FullPageView> {
                         ? Image(
                             width: fullpageThumbnailSize ?? 25,
                             height: fullpageThumbnailSize ?? 25,
-                            image: storiesMapList![
-                                    getStoryIndex(listLengths as List<int>, selectedIndex!)]
+                            image: storiesMapList![getStoryIndex(
+                                    listLengths as List<int>, selectedIndex!)]
                                 .thumbnail,
                           )
                         : Center(),
@@ -220,8 +228,8 @@ class FullPageViewState extends State<FullPageView> {
                       children: [
                         Text(
                           showStoryNameOnFullPage
-                              ? storiesMapList![
-                                      getStoryIndex(listLengths as List<int>, selectedIndex!)]
+                              ? storiesMapList![getStoryIndex(
+                                      listLengths as List<int>, selectedIndex!)]
                                   .name
                               : "",
                           style: widget.fullPagetitleStyle ??

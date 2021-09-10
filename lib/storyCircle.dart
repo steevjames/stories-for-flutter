@@ -37,6 +37,9 @@ class StoryCircle extends StatelessWidget {
 
   /// Status bar color in full view of story
   final Color? storyStatusBarColor;
+
+  final Function? onPageChanged;
+
   StoryCircle({
     this.story,
     this.selectedIndex,
@@ -55,6 +58,7 @@ class StoryCircle extends StatelessWidget {
     this.fullpageThumbnailSize,
     this.showStoryNameOnFullPage,
     this.storyStatusBarColor,
+    this.onPageChanged,
   });
   @override
   Widget build(BuildContext context) {
@@ -93,6 +97,7 @@ class StoryCircle extends StatelessWidget {
                     showStoryNameOnFullPage: showStoryNameOnFullPage,
                     showThumbnailOnFullPage: showThumbnailOnFullPage,
                     storyStatusBarColor: storyStatusBarColor,
+                    onPageChanged: this.onPageChanged,
                   ),
                 ),
               );
