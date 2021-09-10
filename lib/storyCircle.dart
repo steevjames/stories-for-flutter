@@ -38,7 +38,15 @@ class StoryCircle extends StatelessWidget {
   /// Status bar color in full view of story
   final Color? storyStatusBarColor;
 
+  /// Function to run when page changes
   final Function? onPageChanged;
+
+  /// Duration after which next story is displayed
+  /// Default value is infinite.
+  final Duration? autoPlayDuration;
+
+  /// Show story name on main page
+  final bool showStoryName;
 
   StoryCircle({
     this.story,
@@ -59,6 +67,8 @@ class StoryCircle extends StatelessWidget {
     this.showStoryNameOnFullPage,
     this.storyStatusBarColor,
     this.onPageChanged,
+    this.autoPlayDuration,
+    this.showStoryName = true,
   });
   @override
   Widget build(BuildContext context) {
@@ -97,7 +107,8 @@ class StoryCircle extends StatelessWidget {
                     showStoryNameOnFullPage: showStoryNameOnFullPage,
                     showThumbnailOnFullPage: showThumbnailOnFullPage,
                     storyStatusBarColor: storyStatusBarColor,
-                    onPageChanged: this.onPageChanged,
+                    onPageChanged: onPageChanged,
+                    autoPlayDuration: autoPlayDuration,
                   ),
                 ),
               );
@@ -118,10 +129,12 @@ class StoryCircle extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5),
-          Text(
-            story![selectedIndex!].name,
-            style: storyCircleTextStyle ?? TextStyle(fontSize: 13),
-          ),
+          showStoryName
+              ? Text(
+                  story![selectedIndex!].name,
+                  style: storyCircleTextStyle ?? TextStyle(fontSize: 13),
+                )
+              : Center()
         ],
       ),
     );

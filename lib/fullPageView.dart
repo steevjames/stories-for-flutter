@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/Stories_for_Flutter.dart';
 
@@ -27,7 +29,12 @@ class FullPageView extends StatefulWidget {
   /// Status bar color in full view of story
   final Color? storyStatusBarColor;
 
+  /// Function to run when page changes
   final Function? onPageChanged;
+
+  /// Duration after which next story is displayed
+  /// Default value is infinite.
+  final Duration? autoPlayDuration;
 
   FullPageView({
     Key? key,
@@ -42,6 +49,7 @@ class FullPageView extends StatefulWidget {
     this.showStoryNameOnFullPage,
     this.storyStatusBarColor,
     this.onPageChanged,
+    this.autoPlayDuration,
   }) : super(key: key);
   @override
   FullPageViewState createState() => FullPageViewState();
@@ -61,6 +69,7 @@ class FullPageViewState extends State<FullPageView> {
   double? fullpageThumbnailSize;
   late bool showStoryNameOnFullPage;
   Color? storyStatusBarColor;
+  Timer? changePageTimer;
 
   nextPage(index) {
     if (index == combinedList.length - 1) {
@@ -84,6 +93,14 @@ class FullPageViewState extends State<FullPageView> {
         duration: Duration(milliseconds: 100), curve: Curves.easeIn);
   }
 
+  initPageChangeTimer() {
+    if (widget.autoPlayDuration != null) {
+      changePageTimer = Timer.periodic(widget.autoPlayDuration!, (timer) {
+        nextPage(selectedIndex);
+      });
+    }
+  }
+
   @override
   void initState() {
     storiesMapList = widget.storiesMapList;
@@ -101,7 +118,15 @@ class FullPageViewState extends State<FullPageView> {
     showStoryNameOnFullPage = widget.showStoryNameOnFullPage ?? true;
     storyStatusBarColor = widget.storyStatusBarColor;
 
+    initPageChangeTimer();
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    if (changePageTimer != null) changePageTimer!.cancel();
+    super.dispose();
   }
 
   @override

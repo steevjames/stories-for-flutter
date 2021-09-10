@@ -53,6 +53,13 @@ class Stories extends StatelessWidget {
   /// Function to run when a page is changed
   final Function? onPageChanged;
 
+  /// Duration after which next story is displayed
+  /// Default value is infinite.
+  final Duration? autoPlayDuration;
+
+  /// Show story name on main page
+  final bool showStoryName;
+
   Stories({
     this.storyItemList,
     this.storyCircleTextStyle,
@@ -71,6 +78,8 @@ class Stories extends StatelessWidget {
     this.showStoryNameOnFullPage,
     this.storyStatusBarColor,
     this.onPageChanged,
+    this.autoPlayDuration,
+    this.showStoryName = true,
   });
   @override
   Widget build(BuildContext context) {
@@ -102,7 +111,9 @@ class Stories extends StatelessWidget {
                     showStoryNameOnFullPage: showStoryNameOnFullPage,
                     showThumbnailOnFullPage: showThumbnailOnFullPage,
                     storyStatusBarColor: storyStatusBarColor,
-                    onPageChanged: this.onPageChanged,
+                    onPageChanged: onPageChanged,
+                    autoPlayDuration: autoPlayDuration,
+                    showStoryName: showStoryName,
                   ),
                 ),
               ),
