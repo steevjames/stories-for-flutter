@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: NetworkImage(
-                              "https://i.pinimg.com/originals/1c/46/7a/1c467ad167a6a0d26d94ff5e15ab40ce.jpg",
+                              "https://i.pinimg.com/originals/31/bc/a9/31bca95ba39157a6cbf53cdf09dda672.png",
                             ),
                           ),
                         ),
