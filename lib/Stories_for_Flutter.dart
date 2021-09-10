@@ -3,52 +3,52 @@ import 'package:flutter/material.dart';
 
 class Stories extends StatelessWidget {
   /// Recieves the list of stories to display
-  final List<StoryItem> storyItemList;
+  final List<StoryItem>? storyItemList;
 
   /// Text style below the story circle
-  final TextStyle storyCircleTextStyle;
+  final TextStyle? storyCircleTextStyle;
 
   /// Color of the story border
-  final Color highLightColor;
+  final Color? highLightColor;
 
   /// Radius of the story circle
-  final double circleRadius;
+  final double? circleRadius;
 
   /// Space between the story and its border
-  final double circlePadding;
+  final double? circlePadding;
 
   /// Thickness of the border
-  final double borderThickness;
+  final double? borderThickness;
 
   /// Textstyle of title of a story group
-  final TextStyle fullPagetitleStyle;
+  final TextStyle? fullPagetitleStyle;
 
   /// Color for region between border and circle
-  final Color paddingColor;
+  final Color? paddingColor;
 
   /// Choose whether progress has to be shown
-  final bool displayProgress;
+  final bool? displayProgress;
 
   /// Color for visited region in progress indicator
-  final Color fullpageVisitedColor;
+  final Color? fullpageVisitedColor;
 
   /// Color for non visited region in progress indicator
-  final Color fullpageUnisitedColor;
+  final Color? fullpageUnisitedColor;
 
   /// Horizontal space between stories
-  final double spaceBetweenStories;
+  final double? spaceBetweenStories;
 
   /// Whether image has to be show on top left of the page
-  final bool showThumbnailOnFullPage;
+  final bool? showThumbnailOnFullPage;
 
   /// Size of the top left image
-  final double fullpageThumbnailSize;
+  final double? fullpageThumbnailSize;
 
   /// Whether image has to be show on top left of the page
-  final bool showStoryNameOnFullPage;
+  final bool? showStoryNameOnFullPage;
 
   /// Status bar color in full view of story
-  final Color storyStatusBarColor;
+  final Color? storyStatusBarColor;
 
   Stories({
     this.storyItemList,
@@ -79,7 +79,7 @@ class Stories extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: List.generate(
-                  storyItemList.length,
+                  storyItemList!.length,
                   (index) => StoryCircle(
                     story: storyItemList,
                     selectedIndex: index,
@@ -118,5 +118,5 @@ class StoryItem {
 
   /// Add a story
   StoryItem(
-      {@required this.name, @required this.thumbnail, @required this.stories});
+      {required this.name, required this.thumbnail, required this.stories});
 }

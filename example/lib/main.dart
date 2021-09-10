@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stories_for_flutter/stories_for_flutter.dart';
+import 'package:stories_for_flutter/Stories_for_Flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -74,11 +74,12 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     Scaffold(
+                      backgroundColor: Colors.black,
                       body: Center(
                         child: Text(
                           "That's it, Folks !",
                           style: TextStyle(
-                            color: Color(0xff777777),
+                            color: Color(0xffffffff),
                             fontSize: 25,
                           ),
                         ),

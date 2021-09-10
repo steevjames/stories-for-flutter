@@ -1,36 +1,36 @@
-import 'package:stories_for_flutter/stories_for_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:stories_for_flutter/Stories_for_Flutter.dart';
 
 class FullPageView extends StatefulWidget {
-  final List<StoryItem> storiesMapList;
-  final int storyNumber;
-  final TextStyle fullPagetitleStyle;
+  final List<StoryItem>? storiesMapList;
+  final int? storyNumber;
+  final TextStyle? fullPagetitleStyle;
 
   /// Choose whether progress has to be shown
-  final bool displayProgress;
+  final bool? displayProgress;
 
   /// Color for visited region in progress indicator
-  final Color fullpageVisitedColor;
+  final Color? fullpageVisitedColor;
 
   /// Color for non visited region in progress indicator
-  final Color fullpageUnvisitedColor;
+  final Color? fullpageUnvisitedColor;
 
   /// Whether image has to be show on top left of the page
-  final bool showThumbnailOnFullPage;
+  final bool? showThumbnailOnFullPage;
 
   /// Size of the top left image
-  final double fullpageThumbnailSize;
+  final double? fullpageThumbnailSize;
 
   /// Whether image has to be show on top left of the page
-  final bool showStoryNameOnFullPage;
+  final bool? showStoryNameOnFullPage;
 
   /// Status bar color in full view of story
-  final Color storyStatusBarColor;
+  final Color? storyStatusBarColor;
 
   FullPageView({
-    Key key,
-    @required this.storiesMapList,
-    @required this.storyNumber,
+    Key? key,
+    required this.storiesMapList,
+    required this.storyNumber,
     this.fullPagetitleStyle,
     this.displayProgress,
     this.fullpageVisitedColor,
@@ -45,19 +45,19 @@ class FullPageView extends StatefulWidget {
 }
 
 class FullPageViewState extends State<FullPageView> {
-  List<StoryItem> storiesMapList;
-  int storyNumber;
-  List<Widget> combinedList;
-  List listLengths;
-  int selectedIndex;
-  PageController _pageController;
-  bool displayProgress;
-  Color fullpageVisitedColor;
-  Color fullpageUnvisitedColor;
-  bool showThumbnailOnFullPage;
-  double fullpageThumbnailSize;
-  bool showStoryNameOnFullPage;
-  Color storyStatusBarColor;
+  List<StoryItem>? storiesMapList;
+  int? storyNumber;
+  late List<Widget> combinedList;
+  late List listLengths;
+  int? selectedIndex;
+  PageController? _pageController;
+  late bool displayProgress;
+  Color? fullpageVisitedColor;
+  Color? fullpageUnvisitedColor;
+  bool? showThumbnailOnFullPage;
+  double? fullpageThumbnailSize;
+  late bool showStoryNameOnFullPage;
+  Color? storyStatusBarColor;
 
   nextPage(index) {
     if (index == combinedList.length - 1) {
@@ -68,7 +68,7 @@ class FullPageViewState extends State<FullPageView> {
       selectedIndex = index + 1;
     });
 
-    _pageController.animateToPage(selectedIndex,
+    _pageController!.animateToPage(selectedIndex!,
         duration: Duration(milliseconds: 100), curve: Curves.easeIn);
   }
 
@@ -77,7 +77,7 @@ class FullPageViewState extends State<FullPageView> {
     setState(() {
       selectedIndex = index - 1;
     });
-    _pageController.animateToPage(selectedIndex,
+    _pageController!.animateToPage(selectedIndex!,
         duration: Duration(milliseconds: 100), curve: Curves.easeIn);
   }
 
@@ -86,9 +86,9 @@ class FullPageViewState extends State<FullPageView> {
     storiesMapList = widget.storiesMapList;
     storyNumber = widget.storyNumber;
 
-    combinedList = getStoryList(storiesMapList);
-    listLengths = getStoryLengths(storiesMapList);
-    selectedIndex = getInitialIndex(storyNumber, storiesMapList);
+    combinedList = getStoryList(storiesMapList!);
+    listLengths = getStoryLengths(storiesMapList!);
+    selectedIndex = getInitialIndex(storyNumber!, storiesMapList);
 
     displayProgress = widget.displayProgress ?? true;
     fullpageVisitedColor = widget.fullpageVisitedColor;
@@ -103,7 +103,7 @@ class FullPageViewState extends State<FullPageView> {
 
   @override
   Widget build(BuildContext context) {
-    _pageController = PageController(initialPage: selectedIndex);
+    _pageController = PageController(initialPage: selectedIndex!);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -162,7 +162,7 @@ class FullPageViewState extends State<FullPageView> {
               displayProgress
                   ? Row(
                       children: List.generate(
-                            numOfCompleted(listLengths, selectedIndex),
+                            numOfCompleted(listLengths as List<int>, selectedIndex!),
                             (index) => Expanded(
                               child: Container(
                                 margin: EdgeInsets.all(2),
@@ -180,8 +180,8 @@ class FullPageViewState extends State<FullPageView> {
                             ),
                           ) +
                           List.generate(
-                            (getCurrentLength(listLengths, selectedIndex) -
-                                numOfCompleted(listLengths, selectedIndex)),
+                            getCurrentLength(listLengths as List<int>, selectedIndex!) -
+                                numOfCompleted(listLengths as List<int>, selectedIndex!) as int,
                             (index) => Expanded(
                               child: Container(
                                 margin: EdgeInsets.all(2),
@@ -204,12 +204,12 @@ class FullPageViewState extends State<FullPageView> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: (showThumbnailOnFullPage == null ||
-                            showThumbnailOnFullPage)
+                            showThumbnailOnFullPage!)
                         ? Image(
                             width: fullpageThumbnailSize ?? 25,
                             height: fullpageThumbnailSize ?? 25,
-                            image: storiesMapList[
-                                    getStoryIndex(listLengths, selectedIndex)]
+                            image: storiesMapList![
+                                    getStoryIndex(listLengths as List<int>, selectedIndex!)]
                                 .thumbnail,
                           )
                         : Center(),
@@ -220,8 +220,8 @@ class FullPageViewState extends State<FullPageView> {
                       children: [
                         Text(
                           showStoryNameOnFullPage
-                              ? storiesMapList[
-                                      getStoryIndex(listLengths, selectedIndex)]
+                              ? storiesMapList![
+                                      getStoryIndex(listLengths as List<int>, selectedIndex!)]
                                   .name
                               : "",
                           style: widget.fullPagetitleStyle ??
@@ -284,10 +284,10 @@ numOfCompleted(List<int> listLengths, int index) {
   return (index - val);
 }
 
-getInitialIndex(int storyNumber, List<StoryItem> storiesMapList) {
+getInitialIndex(int storyNumber, List<StoryItem>? storiesMapList) {
   int total = 0;
   for (int i = 0; i < storyNumber; i++) {
-    total += storiesMapList[i].stories.length;
+    total += storiesMapList![i].stories.length;
   }
   return total;
 }
