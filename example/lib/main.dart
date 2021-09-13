@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stories_for_flutter/Stories_for_Flutter.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,13 +22,13 @@ class _MyAppState extends State<MyApp> {
               storyItemList: [
                 StoryItem(
                     name: "First Story",
-                    thumbnail: NetworkImage(
+                    thumbnail: const NetworkImage(
                       "https://assets.materialup.com/uploads/82eae29e-33b7-4ff7-be10-df432402b2b6/preview",
                     ),
                     stories: [
                       Scaffold(
                         body: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
@@ -44,7 +40,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       Scaffold(
                         body: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
@@ -57,13 +53,13 @@ class _MyAppState extends State<MyApp> {
                     ]),
                 StoryItem(
                   name: "2nd",
-                  thumbnail: NetworkImage(
+                  thumbnail: const NetworkImage(
                     "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
                   ),
                   stories: [
                     Scaffold(
                       body: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: NetworkImage(
@@ -73,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
-                    Scaffold(
+                    const Scaffold(
                       backgroundColor: Colors.black,
                       body: Center(
                         child: Text(

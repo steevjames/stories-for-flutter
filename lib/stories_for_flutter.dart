@@ -1,4 +1,4 @@
-import 'package:stories_for_flutter/storyCircle.dart';
+import 'package:stories_for_flutter/story_circle.dart';
 import 'package:flutter/material.dart';
 
 class Stories extends StatelessWidget {
@@ -60,7 +60,8 @@ class Stories extends StatelessWidget {
   /// Show story name on main page
   final bool showStoryName;
 
-  Stories({
+  const Stories({
+    Key? key,
     this.storyItemList,
     this.storyCircleTextStyle,
     this.highLightColor,
@@ -80,7 +81,7 @@ class Stories extends StatelessWidget {
     this.onPageChanged,
     this.autoPlayDuration,
     this.showStoryName = true,
-  });
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Align(

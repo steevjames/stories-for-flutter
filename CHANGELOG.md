@@ -1,5 +1,9 @@
 
 
+## 1.1.0
+
+Web support, Code refactor to makeit suite to latest flutter version.
+
 ## 1.0.0
 
 * Auto timer, Event handling, better animation, can hide story name

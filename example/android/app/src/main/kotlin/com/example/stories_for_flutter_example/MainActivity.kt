@@ -1,4 +1,4 @@
-package com.example.Stories_for_Flutter_example
+package com.example.stories_for_flutter_example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:stories_for_flutter/Stories_for_Flutter.dart';
-import 'package:stories_for_flutter/fullPageView.dart';
+import 'package:stories_for_flutter/full_page_view.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 class StoryCircle extends StatelessWidget {
   final List<StoryItem>? story;
@@ -48,7 +48,8 @@ class StoryCircle extends StatelessWidget {
   /// Show story name on main page
   final bool showStoryName;
 
-  StoryCircle({
+  const StoryCircle({
+    Key? key,
     this.story,
     this.selectedIndex,
     this.storyCircleTextStyle,
@@ -69,7 +70,7 @@ class StoryCircle extends StatelessWidget {
     this.onPageChanged,
     this.autoPlayDuration,
     this.showStoryName = true,
-  });
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double? altRadius = 27;
@@ -79,8 +80,9 @@ class StoryCircle extends StatelessWidget {
     }
     if (circlePadding != null) {
       altPadding = altRadius! + circlePadding!;
-    } else
+    } else {
       altPadding = altRadius! + 3;
+    }
     return Container(
       margin: EdgeInsets.fromLTRB(
         spaceBetweenStories ?? 5,
@@ -90,7 +92,7 @@ class StoryCircle extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 7),
+          const SizedBox(height: 7),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -117,7 +119,7 @@ class StoryCircle extends StatelessWidget {
               radius: borderThickness != null
                   ? altPadding + borderThickness!
                   : altPadding + 1.5,
-              backgroundColor: highLightColor ?? Color(0xffcc306C),
+              backgroundColor: highLightColor ?? const Color(0xffcc306C),
               child: CircleAvatar(
                 backgroundColor: paddingColor ?? Colors.white,
                 radius: altPadding,
@@ -128,13 +130,13 @@ class StoryCircle extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           showStoryName
               ? Text(
                   story![selectedIndex!].name,
-                  style: storyCircleTextStyle ?? TextStyle(fontSize: 13),
+                  style: storyCircleTextStyle ?? const TextStyle(fontSize: 13),
                 )
-              : Center()
+              : const Center()
         ],
       ),
     );

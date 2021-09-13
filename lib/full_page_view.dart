@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stories_for_flutter/Stories_for_Flutter.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 class FullPageView extends StatefulWidget {
   final List<StoryItem>? storiesMapList;
@@ -36,7 +36,7 @@ class FullPageView extends StatefulWidget {
   /// Default value is infinite.
   final Duration? autoPlayDuration;
 
-  FullPageView({
+  const FullPageView({
     Key? key,
     required this.storiesMapList,
     required this.storyNumber,
@@ -81,7 +81,7 @@ class FullPageViewState extends State<FullPageView> {
     });
 
     _pageController!.animateToPage(selectedIndex!,
-        duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+        duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
   }
 
   prevPage(index) {
@@ -90,7 +90,7 @@ class FullPageViewState extends State<FullPageView> {
       selectedIndex = index - 1;
     });
     _pageController!.animateToPage(selectedIndex!,
-        duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+        duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
   }
 
   initPageChangeTimer() {
@@ -160,7 +160,7 @@ class FullPageViewState extends State<FullPageView> {
                           onTap: () {
                             prevPage(index);
                           },
-                          child: Center(),
+                          child: const Center(),
                         ),
                       ),
                       SizedBox(
@@ -171,7 +171,7 @@ class FullPageViewState extends State<FullPageView> {
                           onTap: () {
                             nextPage(index);
                           },
-                          child: Center(),
+                          child: const Center(),
                         ),
                       ),
                     ],
@@ -185,7 +185,7 @@ class FullPageViewState extends State<FullPageView> {
             children: <Widget>[
               Container(
                 color: storyStatusBarColor ?? Colors.black,
-                child: SafeArea(
+                child: const SafeArea(
                   child: Center(),
                 ),
               ),
@@ -196,13 +196,13 @@ class FullPageViewState extends State<FullPageView> {
                                 listLengths as List<int>, selectedIndex!),
                             (index) => Expanded(
                               child: Container(
-                                margin: EdgeInsets.all(2),
+                                margin: const EdgeInsets.all(2),
                                 height: 2.5,
                                 decoration: BoxDecoration(
                                     color: fullpageVisitedColor ??
-                                        Color(0xff444444),
+                                        const Color(0xff444444),
                                     borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 10,
                                         color: Colors.black,
@@ -218,20 +218,20 @@ class FullPageViewState extends State<FullPageView> {
                                     selectedIndex!) as int,
                             (index) => Expanded(
                               child: Container(
-                                margin: EdgeInsets.all(2),
+                                margin: const EdgeInsets.all(2),
                                 height: 2.5,
                                 decoration: BoxDecoration(
                                   color: widget.fullpageUnvisitedColor ??
                                       Colors.white,
                                   borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [BoxShadow(blurRadius: 2)],
+                                  boxShadow: const [BoxShadow(blurRadius: 2)],
                                 ),
                               ),
                             ),
                           ),
                     )
-                  : Center(),
-              SizedBox(height: 5),
+                  : const Center(),
+              const SizedBox(height: 5),
               // Story name
               Row(
                 children: [
@@ -246,7 +246,7 @@ class FullPageViewState extends State<FullPageView> {
                                     listLengths as List<int>, selectedIndex!)]
                                 .thumbnail,
                           )
-                        : Center(),
+                        : const Center(),
                   ),
                   Expanded(
                     child: Column(
@@ -259,7 +259,7 @@ class FullPageViewState extends State<FullPageView> {
                                   .name
                               : "",
                           style: widget.fullPagetitleStyle ??
-                              TextStyle(
+                              const TextStyle(
                                 color: Colors.white,
                                 shadows: [
                                   Shadow(blurRadius: 10, color: Colors.black)
@@ -282,9 +282,11 @@ class FullPageViewState extends State<FullPageView> {
 
 List<Widget> getStoryList(List<StoryItem> storiesMapList) {
   List<Widget> imagesList = [];
-  for (int i = 0; i < storiesMapList.length; i++)
-    for (int j = 0; j < storiesMapList[i].stories.length; j++)
+  for (int i = 0; i < storiesMapList.length; i++) {
+    for (int j = 0; j < storiesMapList[i].stories.length; j++) {
       imagesList.add(storiesMapList[i].stories[j]);
+    }
+  }
   return imagesList;
 }
 
