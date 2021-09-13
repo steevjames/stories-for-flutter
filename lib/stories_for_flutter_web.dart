@@ -31,7 +31,8 @@ class StoriesForFlutterWeb {
       default:
         throw PlatformException(
           code: 'Unimplemented',
-          details: 'stories_for_flutter for web doesn\'t implement \'${call.method}\'',
+          details:
+              'stories_for_flutter for web doesn\'t implement \'${call.method}\'',
         );
     }
   }

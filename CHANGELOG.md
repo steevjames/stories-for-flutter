@@ -1,4 +1,7 @@
 
+## 1.1.1
+
+Code formatting
 
 ## 1.1.0
 
