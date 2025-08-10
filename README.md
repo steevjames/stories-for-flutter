@@ -24,28 +24,82 @@ A **customizable** flutter package that allows you to use **Instagram** like sto
 
   **Step 2**: Call the stories plugin and use it. Can give Scaffold to each page, making it highly customizable.
 
-      Stories(
-        storyItemList: [
-          // First group of stories
-          StoryItem(
-              name: "First Story", // Name of first story
-              thumbnail: // Add icon to first story
-              stories: [
-                Page1(),
-                Page2(),
-              ]),
-          // Second story group
-          StoryItem(
-              name: "Second Story", 
-              thumbnail: // Add icon to first story
-            stories: [
-              Page1(),
-              Page2(),
-              Page3()
-            ],
-          ),
-        ],
-      );
+            Stories(
+              circlePadding: 2,
+              storyItemList: [
+                // First Story Details
+                StoryItem(
+                  // Story Name
+                  name: "First Story",
+                  // Story Thumbnail
+                  thumbnail: const NetworkImage(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR96GRtlCaHkKE41pmVsvS0FHuFJgrjeuE25A&s",
+                  ),
+                  // List of pages in the story
+                  stories: [
+                    // First Page
+                    Scaffold(
+                      body: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              "https://wallpaperaccess.com/full/16568.png",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Second Page in first story
+                    Scaffold(
+                      body: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              "https://i.pinimg.com/originals/2e/c6/b5/2ec6b5e14fe0cba0cb0aa5d2caeeccc6.jpg",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Second Story
+                StoryItem(
+                  name: "2nd",
+                  thumbnail: const NetworkImage(
+                    "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
+                  ),
+                  stories: [
+                    Scaffold(
+                      body: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              "https://i.pinimg.com/originals/31/bc/a9/31bca95ba39157a6cbf53cdf09dda672.png",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Scaffold(
+                      backgroundColor: Colors.black,
+                      body: Center(
+                        child: Text(
+                          "That's it, Folks !",
+                          style: TextStyle(
+                            color: Color(0xffffffff),
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )
 
 **Example**:
 
