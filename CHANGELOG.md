@@ -1,3 +1,6 @@
+## 1.3.1
+Dependency update
+
 ## 1.3.0
 Use latest flutter version
 
