@@ -1,4 +1,4 @@
-## 1.2.0
+## 1.3.0
 Use latest flutter version
 
 ## 1.2.0
