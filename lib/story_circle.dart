@@ -49,7 +49,7 @@ class StoryCircle extends StatelessWidget {
   final bool showStoryName;
 
   const StoryCircle({
-    Key? key,
+    super.key,
     this.story,
     this.selectedIndex,
     this.storyCircleTextStyle,
@@ -70,7 +70,7 @@ class StoryCircle extends StatelessWidget {
     this.onPageChanged,
     this.autoPlayDuration,
     this.showStoryName = true,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     double? altRadius = 27;
@@ -124,9 +124,10 @@ class StoryCircle extends StatelessWidget {
                 backgroundColor: paddingColor ?? Colors.white,
                 radius: altPadding,
                 child: CircleAvatar(
-                    radius: altRadius,
-                    backgroundColor: Colors.white,
-                    backgroundImage: story![selectedIndex!].thumbnail),
+                  radius: altRadius,
+                  backgroundColor: Colors.white,
+                  backgroundImage: story![selectedIndex!].thumbnail,
+                ),
               ),
             ),
           ),
@@ -136,7 +137,7 @@ class StoryCircle extends StatelessWidget {
                   story![selectedIndex!].name,
                   style: storyCircleTextStyle ?? const TextStyle(fontSize: 13),
                 )
-              : const Center()
+              : const Center(),
         ],
       ),
     );

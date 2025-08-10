@@ -1,45 +1,26 @@
-import 'dart:async';
 // In order to *not* need this ignore, consider extracting the "web" version
 // of your plugin as a separate package, instead of inlining it in the same
 // package as the core of your plugin.
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show window;
 
-import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:web/web.dart' as web;
 
-/// A web implementation of the StoriesForFlutter plugin.
-class StoriesForFlutterWeb {
+import 'stories_for_flutter_platform_interface.dart';
+
+/// A web implementation of the StoriesForFlutterPlatform of the StoriesForFlutter plugin.
+class StoriesForFlutterPlugin extends StoriesForFlutterPlatform {
+  /// Constructs a StoriesForFlutterWeb
+  StoriesForFlutterPlugin();
+
   static void registerWith(Registrar registrar) {
-    final MethodChannel channel = MethodChannel(
-      'stories_for_flutter',
-      const StandardMethodCodec(),
-      registrar,
-    );
-
-    final pluginInstance = StoriesForFlutterWeb();
-    channel.setMethodCallHandler(pluginInstance.handleMethodCall);
-  }
-
-  /// Handles method calls over the MethodChannel of this plugin.
-  /// Note: Check the "federated" architecture for a new way of doing this:
-  /// https://flutter.dev/go/federated-plugins
-  Future<dynamic> handleMethodCall(MethodCall call) async {
-    switch (call.method) {
-      case 'getPlatformVersion':
-        return getPlatformVersion();
-      default:
-        throw PlatformException(
-          code: 'Unimplemented',
-          details:
-              'stories_for_flutter for web doesn\'t implement \'${call.method}\'',
-        );
-    }
+    StoriesForFlutterPlatform.instance = StoriesForFlutterPlugin();
   }
 
   /// Returns a [String] containing the version of the platform.
-  Future<String> getPlatformVersion() {
-    final version = html.window.navigator.userAgent;
-    return Future.value(version);
+  @override
+  Future<String?> getPlatformVersion() async {
+    final version = web.window.navigator.userAgent;
+    return version;
   }
 }

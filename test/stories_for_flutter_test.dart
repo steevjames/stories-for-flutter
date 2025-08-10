@@ -1,21 +1,29 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:stories_for_flutter/stories_for_flutter.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:stories_for_flutter/stories_for_flutter.dart';
+// import 'package:stories_for_flutter/stories_for_flutter_platform_interface.dart';
+// import 'package:stories_for_flutter/stories_for_flutter_method_channel.dart';
+// import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-void main() {
-  const MethodChannel channel = MethodChannel('stories_for_flutter');
+// class MockStoriesForFlutterPlatform
+//     with MockPlatformInterfaceMixin
+//     implements StoriesForFlutterPlatform {
 
-  TestWidgetsFlutterBinding.ensureInitialized();
+//   @override
+//   Future<String?> getPlatformVersion() => Future.value('42');
+// }
 
-  setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
-    });
-  });
+// void main() {
+//   final StoriesForFlutterPlatform initialPlatform = StoriesForFlutterPlatform.instance;
 
-  tearDown(() {
-    channel.setMockMethodCallHandler(null);
-  });
+//   test('$MethodChannelStoriesForFlutter is the default instance', () {
+//     expect(initialPlatform, isInstanceOf<MethodChannelStoriesForFlutter>());
+//   });
 
-  test('getPlatformVersion', () async {});
-}
+//   test('getPlatformVersion', () async {
+//     StoriesForFlutter storiesForFlutterPlugin = StoriesForFlutter();
+//     MockStoriesForFlutterPlatform fakePlatform = MockStoriesForFlutterPlatform();
+//     StoriesForFlutterPlatform.instance = fakePlatform;
+
+//     expect(await storiesForFlutterPlugin.getPlatformVersion(), '42');
+//   });
+// }

@@ -1,4 +1,4 @@
-#include "include/stories_for_flutter/stories_for_flutter_plugin.h"
+#include "stories_for_flutter_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -10,26 +10,10 @@
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
 
-#include <map>
 #include <memory>
 #include <sstream>
 
-namespace {
-
-class StoriesForFlutterPlugin : public flutter::Plugin {
- public:
-  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
-
-  StoriesForFlutterPlugin();
-
-  virtual ~StoriesForFlutterPlugin();
-
- private:
-  // Called when a method is called on this plugin's channel from Dart.
-  void HandleMethodCall(
-      const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
-};
+namespace stories_for_flutter {
 
 // static
 void StoriesForFlutterPlugin::RegisterWithRegistrar(
@@ -72,11 +56,4 @@ void StoriesForFlutterPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace
-
-void StoriesForFlutterPluginRegisterWithRegistrar(
-    FlutterDesktopPluginRegistrarRef registrar) {
-  StoriesForFlutterPlugin::RegisterWithRegistrar(
-      flutter::PluginRegistrarManager::GetInstance()
-          ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
-}
+}  // namespace stories_for_flutter

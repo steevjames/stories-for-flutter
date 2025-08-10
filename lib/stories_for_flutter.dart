@@ -61,7 +61,7 @@ class Stories extends StatelessWidget {
   final bool showStoryName;
 
   const Stories({
-    Key? key,
+    super.key,
     this.storyItemList,
     this.storyCircleTextStyle,
     this.highLightColor,
@@ -81,7 +81,7 @@ class Stories extends StatelessWidget {
     this.onPageChanged,
     this.autoPlayDuration,
     this.showStoryName = true,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -134,6 +134,9 @@ class StoryItem {
   List<Scaffold> stories;
 
   /// Add a story
-  StoryItem(
-      {required this.name, required this.thumbnail, required this.stories});
+  StoryItem({
+    required this.name,
+    required this.thumbnail,
+    required this.stories,
+  });
 }

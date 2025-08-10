@@ -37,7 +37,7 @@ class FullPageView extends StatefulWidget {
   final Duration? autoPlayDuration;
 
   const FullPageView({
-    Key? key,
+    super.key,
     required this.storiesMapList,
     required this.storyNumber,
     this.fullPagetitleStyle,
@@ -50,7 +50,7 @@ class FullPageView extends StatefulWidget {
     this.storyStatusBarColor,
     this.onPageChanged,
     this.autoPlayDuration,
-  }) : super(key: key);
+  });
   @override
   FullPageViewState createState() => FullPageViewState();
 }
@@ -80,8 +80,11 @@ class FullPageViewState extends State<FullPageView> {
       selectedIndex = index + 1;
     });
 
-    _pageController!.animateToPage(selectedIndex!,
-        duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
+    _pageController!.animateToPage(
+      selectedIndex!,
+      duration: const Duration(milliseconds: 100),
+      curve: Curves.easeIn,
+    );
   }
 
   prevPage(index) {
@@ -89,8 +92,11 @@ class FullPageViewState extends State<FullPageView> {
     setState(() {
       selectedIndex = index - 1;
     });
-    _pageController!.animateToPage(selectedIndex!,
-        duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
+    _pageController!.animateToPage(
+      selectedIndex!,
+      duration: const Duration(milliseconds: 100),
+      curve: Curves.easeIn,
+    );
   }
 
   initPageChangeTimer() {
@@ -149,9 +155,7 @@ class FullPageViewState extends State<FullPageView> {
               combinedList.length,
               (index) => Stack(
                 children: <Widget>[
-                  Scaffold(
-                    body: combinedList[index],
-                  ),
+                  Scaffold(body: combinedList[index]),
                   // Overlay to detect taps for next page & previous page
                   Row(
                     children: <Widget>[
@@ -163,9 +167,7 @@ class FullPageViewState extends State<FullPageView> {
                           child: const Center(),
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 3,
-                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width / 3),
                       Expanded(
                         child: InkWell(
                           onTap: () {
@@ -185,43 +187,52 @@ class FullPageViewState extends State<FullPageView> {
             children: <Widget>[
               Container(
                 color: storyStatusBarColor ?? Colors.black,
-                child: const SafeArea(
-                  child: Center(),
-                ),
+                child: const SafeArea(child: Center()),
               ),
               displayProgress
                   ? Row(
-                      children: List.generate(
+                      children:
+                          List.generate(
                             numOfCompleted(
-                                listLengths as List<int>, selectedIndex!),
+                              listLengths as List<int>,
+                              selectedIndex!,
+                            ),
                             (index) => Expanded(
                               child: Container(
                                 margin: const EdgeInsets.all(2),
                                 height: 2.5,
                                 decoration: BoxDecoration(
-                                    color: fullpageVisitedColor ??
-                                        const Color(0xff444444),
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 10,
-                                        color: Colors.black,
-                                      )
-                                    ]),
+                                  color:
+                                      fullpageVisitedColor ??
+                                      const Color(0xff444444),
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 10,
+                                      color: Colors.black,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ) +
                           List.generate(
                             getCurrentLength(
-                                    listLengths as List<int>, selectedIndex!) -
-                                numOfCompleted(listLengths as List<int>,
-                                    selectedIndex!) as int,
+                                      listLengths as List<int>,
+                                      selectedIndex!,
+                                    ) -
+                                    numOfCompleted(
+                                      listLengths as List<int>,
+                                      selectedIndex!,
+                                    )
+                                as int,
                             (index) => Expanded(
                               child: Container(
                                 margin: const EdgeInsets.all(2),
                                 height: 2.5,
                                 decoration: BoxDecoration(
-                                  color: widget.fullpageUnvisitedColor ??
+                                  color:
+                                      widget.fullpageUnvisitedColor ??
                                       Colors.white,
                                   borderRadius: BorderRadius.circular(20),
                                   boxShadow: const [BoxShadow(blurRadius: 2)],
@@ -237,14 +248,18 @@ class FullPageViewState extends State<FullPageView> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: (showThumbnailOnFullPage == null ||
+                    child:
+                        (showThumbnailOnFullPage == null ||
                             showThumbnailOnFullPage!)
                         ? Image(
                             width: fullpageThumbnailSize ?? 25,
                             height: fullpageThumbnailSize ?? 25,
-                            image: storiesMapList![getStoryIndex(
-                                    listLengths as List<int>, selectedIndex!)]
-                                .thumbnail,
+                            image:
+                                storiesMapList![getStoryIndex(
+                                      listLengths as List<int>,
+                                      selectedIndex!,
+                                    )]
+                                    .thumbnail,
                           )
                         : const Center(),
                   ),
@@ -255,14 +270,17 @@ class FullPageViewState extends State<FullPageView> {
                         Text(
                           showStoryNameOnFullPage
                               ? storiesMapList![getStoryIndex(
-                                      listLengths as List<int>, selectedIndex!)]
-                                  .name
+                                      listLengths as List<int>,
+                                      selectedIndex!,
+                                    )]
+                                    .name
                               : "",
-                          style: widget.fullPagetitleStyle ??
+                          style:
+                              widget.fullPagetitleStyle ??
                               const TextStyle(
                                 color: Colors.white,
                                 shadows: [
-                                  Shadow(blurRadius: 10, color: Colors.black)
+                                  Shadow(blurRadius: 10, color: Colors.black),
                                 ],
                                 fontSize: 13,
                               ),

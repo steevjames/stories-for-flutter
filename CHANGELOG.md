@@ -1,4 +1,7 @@
 ## 1.2.0
+Use latest flutter version
+
+## 1.2.0
 Windows support
 
 ## 1.1.1
